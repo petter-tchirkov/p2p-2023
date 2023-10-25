@@ -1,8 +1,5 @@
 <template>
-  <main class="flex">
-    <Sidebar />
-    <NuxtPage />
-  </main>
+  <div>help</div>
 </template>
 
 <script setup lang="ts"></script>
