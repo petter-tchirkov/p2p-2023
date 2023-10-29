@@ -14,10 +14,14 @@
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/tailwindcss": "^6.8.1",
     "@typescript-eslint/parser": "^6.9.0",
+    "@vueuse/core": "^10.5.0",
+    "@vueuse/nuxt": "^10.5.0",
     "eslint": "^8.52.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "nuxt": "^3.8.0",
+    "nuxt-icon": "^0.6.0",
+    "nuxt-primevue": "^0.0.3",
     "prettier": "^3.0.3",
     "sass": "^1.69.4",
     "typescript": "^5.2.2",
@@ -29,6 +33,6 @@
     "pinia": "^2.1.7"
   },
   "overrides": {
-    "vue": "latest"
-  }
+  "vue": "latest"
+}
 }

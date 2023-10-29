@@ -1,7 +1,7 @@
 <template>
   <main class="flex">
-    <Sidebar />
-    <NuxtPage />
+    <ui-sidebar />
+    <NuxtPage class="w-full" />
   </main>
 </template>
 

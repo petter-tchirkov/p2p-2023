@@ -5,13 +5,13 @@
         <div class="flex gap-5">
           <NuxtLink
             to="/clients"
-            class="relative text-xl font-medium text-blue-8"
+            class="text-blue-8 font-medium text-xl relative"
             >Ваши счета</NuxtLink
           >
-          <NuxtLink to="/" class="relative text-xl font-medium text-blue-8"
+          <NuxtLink to="/" class="text-blue-8 font-medium text-xl relative"
             >Продажа</NuxtLink
           >
-          <NuxtLink to="/buy" class="text-xl font-medium text-blue-8"
+          <NuxtLink to="/buy" class="text-blue-8 font-medium text-xl relative"
             >Покупка</NuxtLink
           >
         </div>
@@ -23,26 +23,17 @@
     </ui-header>
     <div class="pt-4">
       <DataTable
-        :value="useOrderStore().sells"
+        :value="useOrderStore().buys"
         :pt="{
           table: { class: 'w-full' },
           bodyRow: { class: 'border-b border-b-blue-2' },
           thead: { class: 'border-b border-b-blue-2' },
           headerRow: { class: 'text-xs text-gray-7 font-light' },
         }"
-        @row-click="
-          (event) => {
-            router.push({
-              path: '/review',
-              query: { id: event.data.user._id },
-            });
-          }
-        "
       >
         <template #empty>
           <div class="py-3 text-center">Ничего не найдено</div>
         </template>
-
         <Column
           header="Пользователь"
           class="px-7 py-2 border-r border-r-blue-2 min-w-[750px]"
@@ -51,7 +42,7 @@
             <div class="flex justify-between">
               <div class="flex items-center gap-3">
                 <img
-                  class="object-cover rounded-full w-7 h-7"
+                  class="w-7 h-7 rounded-full object-cover"
                   src="https://www.towleroad.com/wp-content/uploads/2021/02/astley-1024x736.jpeg"
                   alt=""
                 />
@@ -67,15 +58,15 @@
               <div class="flex items-center gap-2">
                 <icons-currencies
                   :name="data.from.system"
-                  class="flex items-center w-8 h-8"
+                  class="w-8 h-8 flex items-center"
                 />
                 <icons-currencies
                   name="arrow"
-                  class="flex items-center w-5 h-3"
+                  class="w-5 h-3 flex items-center"
                 />
                 <icons-currencies
                   :name="data.from.system"
-                  class="flex items-center w-8 h-8"
+                  class="w-8 h-8 flex items-center"
                 />
               </div>
             </div>
@@ -83,13 +74,13 @@
         </Column>
         <Column
           header="Сумма на продажу"
-          class="py-2 border-r px-7 border-r-blue-2"
+          class="px-7 py-2 border-r border-r-blue-2"
         >
           <template #body="{ data }">
             <span>$ {{ data.from.amount_to_sell }}</span>
           </template>
         </Column>
-        <Column header="Рейтинг" class="py-2 border-r px-7 border-r-blue-2">
+        <Column header="Рейтинг" class="px-7 py-2 border-r border-r-blue-2">
           <template #body="{ data }">
             <div class="flex items-center gap-2">
               <icons-base name="star" />
@@ -98,7 +89,7 @@
             </div>
           </template>
         </Column>
-        <Column header="Репутация" class="py-2 px-7">
+        <Column header="Репутация" class="px-7 py-2">
           <template #body="{ data }">
             <div class="flex gap-5">
               <div class="flex items-center gap-1 5">
@@ -122,11 +113,8 @@
 <script setup lang="ts">
 import { useOrderStore } from "~/store/orders";
 import { useAuthStore } from "~/store/auth";
-import { useRouter } from "vue-router";
-
-await useOrderStore().getSellOrders();
+await useOrderStore().getBuyOrders();
 const auth = useAuthStore();
-const router = useRouter();
 </script>
 
 <style lang="scss" scoped>
@@ -141,10 +129,5 @@ const router = useRouter();
 
     @apply bg-blue-8;
   }
-}
-
-.grid-table {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
 }
 </style>
